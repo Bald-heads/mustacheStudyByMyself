@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div></div>
+<script src="/xuni/bundle.js"></script>
+<script>
+    let templateStr = `
+    <div>
+        <ol>
+            {{#students}}
+            <li>
+                学生{{name}}的爱好是
+                <ol>
+                    {{#hobbies}}
+                        <li>{{.}}</li>
+                    {{/hobbies}}
+                </ol>
+            </li>
+            {{/students}}
+        </ol>
+    </div>
+    `
+    let data = {
+        students: [
+            {"name": "小明", "hobbies": ["游泳", "乒乓球"]},
+            {"name": "小红", "hobbies": ["健美操", "篮球", "学习"]},
+            {"name": "小王", "hobbies": ["足球", "编程"]}
+        ]
+    }
+    let result = TemplateEngine.render(templateStr, data)
+    document.querySelector("div").innerHTML = result
+</script>
+</body>
+</html>
